@@ -1,9 +1,0 @@
-NEK_SOURCE_ROOT=/home/loiseau/GitHub/nekStab/Nek5000
-FC=mpif90
-FFLAGS=-march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/loiseau/miniconda3/envs/nekStab/include-march=native -ffixed-line-length-none -w -Wall -g -fbacktrace -mcmodel=large -DNVERSION="'v19.0-1-g7ae03b1'" -DNSVERSION="'v1.0.1-374-g7d6f54c'"
-FCPP=-cpp
-FR8=-fdefault-real-8 -fdefault-double-8
-FF77=-std=legacy
-CC=mpicc
-CFLAGS=-march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/loiseau/miniconda3/envs/nekStab/include
-PPLIST= MPI UNDERSCORE GLOBAL_LONG_LONG TIMER
