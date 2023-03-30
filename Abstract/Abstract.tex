@@ -1,0 +1,87 @@
+%Template prepared by grzegorz ha\l aj for second AMaMeF conference, 17 Oct 2006
+
+
+\documentclass[12pt]{article}
+
+\usepackage[top=2in, bottom=2in, left=1in, right=1in]{geometry}
+
+\usepackage{calc}
+\usepackage{color}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+\usepackage{placeins}
+\ifx\pdftexversion\undefined
+  \usepackage[dvips]{graphicx}
+\else
+  \usepackage[pdftex]{graphicx}
+\fi
+\usepackage{amssymb}
+\usepackage{authblk}
+\usepackage{amsmath}
+\usepackage[cp1250]{inputenc}
+\usepackage[OT4]{fontenc}
+
+\addtolength{\voffset}{-3.5cm} \addtolength{\textheight}{4cm}
+
+\renewcommand\Authfont{\scshape\small}
+\renewcommand\Affilfont{\itshape\small}
+\setlength{\affilsep}{1em}
+
+\newcommand{\smalllineskip}{\baselineskip=15pt}
+\newcommand{\keywords}[1]{{\footnotesize\hspace{0.68cm}{\textit{Keywords}: }#1\par
+  \vskip.7\baselineskip}}
+\renewenvironment{abstract}[0]{\small\rm
+        \begin{center}ABSTRACT
+        \\ \vspace{8pt}
+        \begin{minipage}{5.2in}\smalllineskip
+        \hspace{1pc}}{\end{minipage}\end{center}\vspace{-1pt}}
+\newcommand{\emailaddress}[1]{\newline{\sf#1}}
+
+\let\LaTeXtitle\title
+\renewcommand{\title}[1]{\LaTeXtitle{\large\textsf{\textbf{#1}}}}
+
+%%%TITLE
+\title{Time-stepping techniques for large-scale linear algebra problems}
+\date{}
+
+%%AFFILIATIONS
+\author[1]{\underline{Jean-Christophe Loiseau}}
+\author[2]{Ricardo S. Frantz}
+\author[1]{Jean-Christophe Robinet}
+\affil[1]{
+  Arts \& Métiers Institute of Technology, Paris, France
+}
+\affil[2]{
+  Insitut Jean Le Rond d'Alembert, Paris, France
+}
+
+%%DOCUMENT
+\begin{document}
+\maketitle
+
+With the continuous augmentation of computational capabilities, the hydrodynamic stability community has turned its attention to increasingly complex and large-scale systems.
+Given a nonlinear system
+%
+\[
+  \dfrac{d \mathbf{X}}{dt} = \mathbf{F}(t, \mathbf{X}, \mathbf{u})
+\]
+%
+and its linearization
+%
+\[
+  \dfrac{d \mathbf{x}}{dt} = \mathbf{A}(t) \mathbf{x} + \mathbf{Bu},
+\]
+%
+two main computational paradigms co-exist to compute equilibria of the system and the spectral properties of the associated linearized operator: \emph{i}) a \emph{matrix-forming approach} where $\mathbf{A} \in \mathbb{R}^{n \times n}$ is explitly constructed, and \emph{ii}) a \emph{time-stepper approach} where the spectral properties of $\mathbf{A}$ are infered from the exponential propagator $\exp(\tau \mathbf{A})$, each having its pros and cons.
+
+In this talk, we will deep dive into the time-stepper approach.
+It revolves around two key elements: \emph{i}) an efficient time-stepping solver to compute $\mathbf{X}(\tau) = \int_{0}^\tau \mathbf{F}(t, \mathbf{X}, \mathbf{u}) \ \mathrm{d}t$ and its linearized counterpart $\mathbf{x}(\tau) = \int_{0}^\tau \mathbf{A}(t) \mathbf{x} \ \mathrm{d} t$, and \emph{ii}) the use of Krylov subspaces for the resulting large-scale linear algebra problems.
+Using the incompressible Navier-Stokes equations as an example, we will illustrate how such tools can be used to efficiently compute fixed points and periodic orbits, as well as studying the spectral properties of the corresponding linearized operators (e.g.\ eigenvalue of singular value decomposition, sensitivity analysis, etc).
+Along with its high computational efficiency and scalability, one major advantage of the time-stepper approach is that it requires minimal modifications of an existing CFD solver.
+
+% \begin{thebibliography}{99}
+%   \small
+% \bibitem[1]{kowalski} Kowalski J. \textit{On inexistance of strange
+% options}, Medieval Markets, Varsovia, pp. 1--100, 1478.
+% \end{thebibliography}
+\end{document}
